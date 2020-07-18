@@ -60,4 +60,19 @@ Route::get("/servicios", function(){
     return view("servicios");
 });
 
+// Ruta con Controladores
 
+Route::get("/persona", "PersonaController@listar")->name("lista_persona");
+Route::get("/persona/crear", "PersonaController@crear");
+Route::post("/persona", "PersonaController@guardar");
+Route::get("/persona/{id}", "PersonaController@mostrar");
+Route::get("/persona/{id}/editar", "PersonaController@editar");
+Route::put("/persona/{id}", "PersonaController@modificar");
+Route::delete("/persona/{id}", "PersonaController@eliminar");
+
+//Crear 3 controladore
+// 1. CategoriaController
+// 2. ProductoController
+// 3. ProveedorController
+//-----
+// php artisan make:controller CategoriaController -r
