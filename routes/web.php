@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('inicio');
+    //return view('welcome');
 });
 
 //Rutas con Funcion Cerrada (Closhures)
@@ -76,3 +77,9 @@ Route::delete("/persona/{id}", "PersonaController@eliminar");
 // 3. ProveedorController
 //-----
 // php artisan make:controller CategoriaController -r
+
+Route::resource("categoria", "CategoriaController");
+Route::resource("producto", "ProductoController");
+Route::resource("proveedor", "ProveedorController");
+Route::resource("usuario", "UsuarioController");
+

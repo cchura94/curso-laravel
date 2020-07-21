@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CategoriaController extends Controller
+class ProveedorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +13,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        // Listar
-        return view("admin.categoria.listar");
+        return view('admin.proveedor.listar');
     }
 
     /**
@@ -24,8 +23,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        // Cargar el formulario (GET)
-        return view("admin.categoria.crear");
+        return view('admin.proveedor.crear');
     }
 
     /**
@@ -36,7 +34,7 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        // Guardar un recurso (POST)
+        //
     }
 
     /**
@@ -47,8 +45,7 @@ class CategoriaController extends Controller
      */
     public function show($id)
     {
-        // Cargar datos por id (GET)
-        return view("admin.categoria.mostrar");
+        return view('admin.proveedor.mostrar');
     }
 
     /**
@@ -59,8 +56,7 @@ class CategoriaController extends Controller
      */
     public function edit($id)
     {
-        // cargar un formulario con un recurso (GET)
-        return view("admin.categoria.editar");
+        return view('admin.proveedor.editar');
     }
 
     /**
@@ -72,7 +68,7 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Modificar un recurso (PUT)
+        //
     }
 
     /**
@@ -83,6 +79,6 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-        // Eliminar un recurso (DELETE)
+        //
     }
 }
