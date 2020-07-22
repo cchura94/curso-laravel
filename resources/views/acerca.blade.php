@@ -1,5 +1,12 @@
 @extends('layouts.sitio')
 
+@section("titulo", "ACERCA DE NOSOTROS")
+
+@section("css")
+<style>
+</style>
+@endsection
+
 @section('contenedor')
 
     <h1>ACERCA DE NOSOTROS</h1>

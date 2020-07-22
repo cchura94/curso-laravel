@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios</title>
-</head>
-<body>
+@extends("layouts.sitio")
+
+@section("titulo", "Servicios")
+
+@section("contenedor")
+
     <h1>Servicios</h1>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis obcaecati veritatis libero animi ex impedit, quod maxime voluptatum? Dolore deserunt dolores, mollitia laboriosam omnis ab repudiandae nam officiis sit placeat?
     Voluptates recusandae sapiente itaque quaerat praesentium voluptatum facere. Aliquid, alias commodi doloremque ipsum vel quaerat doloribus, mollitia sint inventore eligendi nihil debitis culpa impedit. Ea numquam veritatis magni libero minus?
@@ -17,5 +15,5 @@
     Error nemo expedita sit voluptas sunt! Architecto dolore expedita ipsa, praesentium voluptate saepe natus harum aperiam, ea repellendus minima. Atque nulla quae nostrum incidunt voluptatibus doloremque. Cumque magnam perspiciatis est.
     Nobis eveniet sed veritatis consequatur ut, earum perspiciatis adipisci est, repellendus beatae eligendi, maiores qui totam id. Deleniti saepe iure iusto nulla nobis, repellat, at eos pariatur delectus expedita magni.
     Illum id esse temporibus doloremque, molestiae nihil totam est culpa eius voluptatum sed qui? Quod sequi dicta fugit voluptate provident? Odio distinctio culpa repellendus quas ea sed possimus corrupti blanditiis.</p>
-</body>
-</html>
+
+@endsection

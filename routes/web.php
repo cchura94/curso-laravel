@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('inicio');
     //return view('welcome');
-});
+})->name("inicio");
 
 //Rutas con Funcion Cerrada (Closhures)
 Route::get("/hola", function(){
@@ -51,15 +51,15 @@ Route::get("/nombre/{nom}/edad/{ed}", function($n, $ed){
 //Rutas con Vistas
 Route::get("/nosotros", function(){
     return view("acerca");
-});
+})->name("acerca");
 
 Route::get("/contactos", function(){
     return view("contacto");
-});
+})->name('contacto');
 
 Route::get("/servicios", function(){
     return view("servicios");
-});
+})->name("servicio");
 
 // Ruta con Controladores
 
