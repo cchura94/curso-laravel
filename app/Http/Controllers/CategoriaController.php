@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+use App\Categoria;
 
 class CategoriaController extends Controller
 {
@@ -14,7 +17,13 @@ class CategoriaController extends Controller
     public function index()
     {
         // Listar
-        return view("admin.categoria.listar");
+        //$categorias = DB::select("select * from categorias");
+        //$categorias = DB::table("categorias")->where('nombre',"=",'ropa')->get();
+        $categorias = Categoria::All();
+        
+        //return view("admin.categoria.listar", ["categorias" => $categorias]);
+        //return view("admin.categoria.listar")->with('categorias', $categorias);
+        return view("admin.categoria.listar", compact("categorias"));
     }
 
     /**
