@@ -2,8 +2,21 @@
 
 @section("contenedor")
 
+
 <h1>Lista de categorias</h1>
-{{ $categorias }}
+<!-- {{ $categorias }} -->
+
+@if(session('ok'))
+    <div class="alert alert-success">
+        <p>{{ session('ok') }}</p>
+    </div>
+@endif
+
+<a href="/admin/categoria/create" class="btn btn-primary">Nueva Categoria</a>
+<a href="{{ route('categoria.create') }}" class="btn btn-info">Nueva Categoria</a>
+<a href="{{ url('/admin/categoria/create') }}" class="btn btn-info">Nueva Categoria</a>
+
+
 <table class="table">
     <thead>
         <tr>
@@ -20,8 +33,15 @@
             <td>{{ $cat->nombre }}</td>
             <td>{{ $cat->descripcion }}</td>
             <td>
-                <a href="" class="btn btn-success btn-xs">ver</a>
-                <a href="" class="btn btn-warning btn-xs">editar</a>
+                <a href="{{ route('categoria.show', $cat->id) }}" class="btn btn-success btn-xs">ver</a>
+                <a href="{{ route('categoria.edit', $cat->id) }}" class="btn btn-warning btn-xs">editar</a>
+
+                <form action="{{ route('categoria.destroy', $cat->id) }}" method="post">
+                    @csrf
+                    @Method('DELETE')
+                    <input type="submit" value="eliminar" class="btn btn-danger btn-xs">
+                </form>
+
             </td>
         </tr>
     @endforeach

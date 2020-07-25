@@ -61,6 +61,10 @@ Route::get("/servicios", function(){
     return view("servicios");
 })->name("servicio");
 
+
+
+Route::prefix('admin')->group(function () {
+
 // Ruta con Controladores
 
 Route::get("/persona", "PersonaController@listar")->name("lista_persona");
@@ -83,3 +87,4 @@ Route::resource("producto", "ProductoController");
 Route::resource("proveedor", "ProveedorController");
 Route::resource("usuario", "UsuarioController");
 
+});

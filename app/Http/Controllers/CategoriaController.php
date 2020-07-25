@@ -46,6 +46,19 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
         // Guardar un recurso (POST)
+
+        //Validacion el lado del servidor
+        $request->validate([
+            "nombre" => "required|min:2|max:100|unique:categorias"
+        ]);
+
+        //Guardar la información
+        $cat = new Categoria;
+        $cat->nombre = $request->nombre;
+        $cat->descripcion = $request->descripcion;
+        $cat->save();
+        return redirect("/admin/categoria")->with("ok", "Categoria Registrada");
+
     }
 
     /**
@@ -57,7 +70,8 @@ class CategoriaController extends Controller
     public function show($id)
     {
         // Cargar datos por id (GET)
-        return view("admin.categoria.mostrar");
+        $categoria = Categoria::find($id);
+        return view("admin.categoria.mostrar", compact('categoria'));
     }
 
     /**
@@ -69,7 +83,8 @@ class CategoriaController extends Controller
     public function edit($id)
     {
         // cargar un formulario con un recurso (GET)
-        return view("admin.categoria.editar");
+        $categoria = Categoria::find($id);
+        return view("admin.categoria.editar", compact('categoria'));
     }
 
     /**
@@ -82,6 +97,14 @@ class CategoriaController extends Controller
     public function update(Request $request, $id)
     {
         // Modificar un recurso (PUT)
+        //validar
+        //mofificar
+        $cat = Categoria::find($id);
+        $cat->nombre = $request->nombre;
+        $cat->descripcion = $request->descripcion;
+        $cat->save();
+        return redirect("/admin/categoria")->with('ok', "Categoria Modificada");
+
     }
 
     /**
@@ -93,5 +116,8 @@ class CategoriaController extends Controller
     public function destroy($id)
     {
         // Eliminar un recurso (DELETE)
+        $cat = Categoria::find($id);
+        $cat->delete();
+        return redirect("/admin/categoria")->with("ok", "Categoria Eliminada");
     }
 }
