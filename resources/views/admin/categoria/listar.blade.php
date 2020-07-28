@@ -48,5 +48,7 @@
     </tbody>
 
 </table>
-
+{{ $categorias->links() }}
+Total por página: {{ $categorias->count() }}
+Total categorias: {{ $categorias->total() }}
 @endsection

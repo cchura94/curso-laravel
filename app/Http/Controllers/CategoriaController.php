@@ -19,7 +19,7 @@ class CategoriaController extends Controller
         // Listar
         //$categorias = DB::select("select * from categorias");
         //$categorias = DB::table("categorias")->where('nombre',"=",'ropa')->get();
-        $categorias = Categoria::All();
+        $categorias = Categoria::paginate(3);
         
         //return view("admin.categoria.listar", ["categorias" => $categorias]);
         //return view("admin.categoria.listar")->with('categorias', $categorias);
