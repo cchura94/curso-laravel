@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Producto;
+use App\Categoria;
+use App\Proveedor;
 
 class ProductoController extends Controller
 {
@@ -26,7 +28,9 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        return view('admin.producto.crear');
+        $categorias = Categoria::All();
+        $proveedores = Proveedor::All();
+        return view('admin.producto.crear', compact("categorias", "proveedores"));
     }
 
     /**
@@ -37,7 +41,32 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "nombre" => "required|min:2|max:150",
+            "precio" => "required",
+            "cantidad" => "required",
+            "categoria_id" => "required",
+            "proveedor_id" => "required",
+        ]);
+
+        $prod = new Producto;
+        $prod->nombre = $request->nombre;
+        $prod->cantidad = $request->cantidad;
+        $prod->precio = $request->precio;
+        $prod->categoria_id = $request->categoria_id;
+        $prod->proveedor_id = $request->proveedor_id;
+        $prod->descripcion = $request->descripcion;
+
+        if($file = $request->file("imagen")){
+            $nombre_archivo = $file->getClientOriginalName();
+            $file->move("img/productos", $nombre_archivo);
+        
+        $prod->imagen = "/img/productos/" . $nombre_archivo;
+        }
+        $prod->save();
+
+        return redirect("/admin/producto");
+        
     }
 
     /**
@@ -59,7 +88,10 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.producto.editar');
+        $categorias = Categoria::All();
+        $proveedores = Proveedor::All();
+        $producto = Producto::find($id);
+        return view('admin.producto.editar', compact('categorias', 'proveedores', 'producto'));
     }
 
     /**
@@ -71,7 +103,31 @@ class ProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            "nombre" => "required|min:2|max:150",
+            "precio" => "required",
+            "cantidad" => "required",
+            "categoria_id" => "required",
+            "proveedor_id" => "required",
+        ]);
+
+        $prod = Producto::find($id);
+        $prod->nombre = $request->nombre;
+        $prod->cantidad = $request->cantidad;
+        $prod->precio = $request->precio;
+        $prod->categoria_id = $request->categoria_id;
+        $prod->proveedor_id = $request->proveedor_id;
+        $prod->descripcion = $request->descripcion;
+
+        if($file = $request->file("imagen")){
+            $nombre_archivo = $file->getClientOriginalName();
+            $file->move("img/productos", $nombre_archivo);
+        
+        $prod->imagen = "/img/productos/" . $nombre_archivo;
+        }
+        $prod->save();
+
+        return redirect("/admin/producto");
     }
 
     /**
