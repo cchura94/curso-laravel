@@ -1,5 +1,7 @@
 @extends("layouts.admin")
 
+@section('titulo', 'Lista producto')
+
 @section("contenedor")
 
 <h1>Lista de Productos</h1>

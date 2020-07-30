@@ -1,4 +1,8 @@
-@extends("layouts.admin") @section("contenedor")
+@extends("layouts.admin") 
+
+@section('titulo', 'Nuevo producto')
+
+@section("contenedor")
 
 <h1>Nuevo Producto</h1>
 
@@ -22,28 +26,38 @@
     <input
         type="text"
         name="nombre"
-        class="form-control"
+        class="form-control @error('nombre') is-invalid @enderror"
         value="{{ old('nombre') }}"
     />
+    @error('nombre')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
     <label for="">Cantidad:</label>
     <input
         type="number"
         name="cantidad"
-        class="form-control"
+        class="form-control @error('cantidad') is-invalid @enderror"
         value="{{ old('cantidad') }}"
     />
+    @error('cantidad')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
     <label for="">Precio:</label>
     <input
         type="number"
         step="0.01"
         name="precio"
-        class="form-control"
+        class="form-control @error('precio') is-invalid @enderror"
         value="{{ old('precio') }}"
     />
     <label for="">imagen:</label>
     <input type="file" name="imagen" class="form-control" />
     <label for="">Categoria:</label>
-    <select name="categoria_id" id="" class="form-control">
+    <select name="categoria_id" id="" class="form-control @error('categoria_id') is-invalid @enderror.">
         <option value="">Seleccionar una opcion</option>
         @foreach($categorias as $cat)
         <option {{ ($cat->id == old('categoria_id'))?'selected':'' }} value="{{ $cat->id }}"

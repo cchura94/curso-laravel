@@ -63,8 +63,11 @@ Route::get("/servicios", function(){
 
 
 
-Route::prefix('admin')->group(function () {
+Route::middleware(['auth'])->prefix('admin')->group(function () {
 
+    Route::get("/", function(){
+        return view("home");
+    });
 // Ruta con Controladores
 
 Route::get("/persona", "PersonaController@listar")->name("lista_persona");
@@ -83,8 +86,11 @@ Route::delete("/persona/{id}", "PersonaController@eliminar");
 // php artisan make:controller CategoriaController -r
 
 Route::resource("categoria", "CategoriaController");
-Route::resource("producto", "ProductoController");
+Route::resource("producto", "ProductoController")->middleware("auth");
 Route::resource("proveedor", "ProveedorController");
 Route::resource("usuario", "UsuarioController");
 
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

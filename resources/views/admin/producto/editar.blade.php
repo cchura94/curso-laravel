@@ -1,6 +1,12 @@
-@extends("layouts.admin") @section("contenedor")
+@extends("layouts.admin")
 
-<h1>Nuevo Producto</h1>
+@section('titulo', 'Editar producto')
+
+ @section("contenedor")
+
+
+
+<h1>Editar Producto</h1>
 
 @if ($errors->any())
 <div class="alert alert-danger">
