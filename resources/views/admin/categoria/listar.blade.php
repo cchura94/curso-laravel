@@ -15,8 +15,11 @@
 <a href="/admin/categoria/create" class="btn btn-primary">Nueva Categoria</a>
 <a href="{{ route('categoria.create') }}" class="btn btn-info">Nueva Categoria</a>
 <a href="{{ url('/admin/categoria/create') }}" class="btn btn-info">Nueva Categoria</a>
+<form action="{{ route('categoria.index') }}" method="get">
+    <input type="search" name="q">
+</form>
 
-
+<a href="{{ route('reporte_pdf') }}" class="btn btn-info text-right" target="_blank">generar reporte</a>
 <table class="table">
     <thead>
         <tr>

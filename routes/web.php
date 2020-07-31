@@ -62,6 +62,7 @@ Route::get("/servicios", function(){
 })->name("servicio");
 
 
+Route::get("/admin/categoria/reporte", "CategoriaController@reporte_pdf")->name("reporte_pdf");
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
 
